@@ -6,7 +6,7 @@ The Conduiter Relay accepts inbound WebSocket connections from sender daemons, v
 
 ```hcl
 module "relay" {
-  source  = "conduiter/relay/aws"
+  source  = "Conduiter/conduiter-relay/aws"
   version = "~> 1.0"
 
   org_token       = var.org_token

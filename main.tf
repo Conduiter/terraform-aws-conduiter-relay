@@ -328,7 +328,7 @@ resource "aws_ecs_task_definition" "relay" {
   container_definitions = jsonencode([
     {
       name      = "relay"
-      image     = "public.ecr.aws/conduiter/relay:${var.image_tag}"
+      image     = "public.ecr.aws/y8p4n9c1/relay:${var.image_tag}"
       essential = true
 
       portMappings = [
