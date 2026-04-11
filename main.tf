@@ -341,27 +341,24 @@ resource "aws_ecs_task_definition" "relay" {
 
       environment = [
         {
-          name  = "CONDUITER_API_ENDPOINT"
+          name  = "CONDUITER_API_URL"
           value = var.api_endpoint
         },
         {
-          name  = "CONDUITER_RELAY_NAME"
+          name  = "RELAY_NAME"
           value = var.relay_name
         },
         {
-          name  = "CONDUITER_MAX_DAEMONS"
+          name  = "RELAY_MAX_DAEMONS"
           value = tostring(var.relay_max_daemons_per_instance)
-        }
-      ]
-
-      secrets = [
-        {
-          name      = "CONDUITER_ORG_TOKEN"
-          valueFrom = "${aws_secretsmanager_secret.relay_keypair.arn}:org_token::"
         },
         {
-          name      = "CONDUITER_RELAY_PRIVATE_KEY"
-          valueFrom = "${aws_secretsmanager_secret.relay_keypair.arn}:private_key::"
+          name  = "ORG_TOKEN"
+          value = var.org_token
+        },
+        {
+          name  = "PRIVATE_KEY_ARN"
+          value = aws_secretsmanager_secret.relay_keypair.arn
         }
       ]
 
