@@ -1,6 +1,11 @@
+output "relay_name" {
+  description = "Logical name of this relay (use this to wire daemons to the relay)"
+  value       = var.relay_name
+}
+
 output "relay_endpoint" {
-  description = "HTTPS endpoint for the relay ALB"
-  value       = "https://${aws_lb.relay.dns_name}"
+  description = "WSS endpoint for the relay ALB"
+  value       = "wss://${aws_lb.relay.dns_name}"
 }
 
 output "relay_id" {
