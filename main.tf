@@ -38,7 +38,12 @@ resource "aws_cloudwatch_log_group" "relay" {
 resource "aws_secretsmanager_secret" "relay_keypair" {
   name                    = "conduiter/relay/${var.relay_name}/keypair"
   description             = "Conduiter relay keypair for ${var.relay_name}"
-  recovery_window_in_days = 7
+  # Immediate delete on destroy. The default 7-day recovery window means
+  # `terraform destroy` + re-apply with the same relay_name fails with
+  # "a secret with this name is already scheduled for deletion". Relays
+  # regenerate their keypair on first boot when the secret is empty, so
+  # the recovery safety net is not worth the operational pain.
+  recovery_window_in_days = 0
 
   tags = {
     Name        = "conduiter-relay-${var.relay_name}-keypair"
