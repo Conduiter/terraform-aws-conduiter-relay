@@ -53,4 +53,4 @@ module "relay" {
 | alb_arn | ARN of the relay Application Load Balancer |
 | security_group_id | ID of the relay ALB security group |
 
-See the [full documentation](https://docs.conduiter.com/getting-started/aws-setup) for detailed setup instructions.
+See the [full documentation](https://app.conduiter.com/docs/getting-started/aws-setup) for detailed setup instructions.
